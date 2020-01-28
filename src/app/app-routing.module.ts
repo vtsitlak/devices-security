@@ -19,11 +19,11 @@ export const routes: Routes = [
     path: 'details',
     loadChildren: () => import('./details/details.module').then(m => m.DetailsModule),
   },
-  // {
-  //   // path: '',
-  //   // redirectTo: '/devices',
-  //   // pathMatch: 'full',
-  // }
+  {
+    path: '',
+    redirectTo: '/devices',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
