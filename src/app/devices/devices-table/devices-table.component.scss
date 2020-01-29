@@ -1,0 +1,8 @@
+table,
+.mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-cell:last-of-type {
+  text-align: right;
+}

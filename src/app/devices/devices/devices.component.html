@@ -1,1 +1,6 @@
-<div class="devices-panel"></div>
+<div class="devices-panel">
+    <mat-spinner *ngIf="loading$ | async" color="accent" diameter="180"></mat-spinner>
+    <div *ngIf="!(loading$ | async) && devices">
+        <app-devices-table [devices]="devices"></app-devices-table>
+    </div>
+</div>
