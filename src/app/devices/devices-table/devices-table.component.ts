@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Device } from '../models/device';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-devices-table',
@@ -14,16 +15,20 @@ export class DevicesTableComponent implements OnInit {
   @Input() devices: Device[];
   displayedColumns: string[] = ['id', 'type', 'riskLevel', 'lastSeen', 'details'];
   label = {
-    id: '#',
+    id: 'ID',
     type: 'Type',
     riskLevel: 'Risk level/score',
     lastSeen: 'Last seen',
-    details: 'Details',
+    details: 'Link to details',
   };
   dataSource: MatTableDataSource<Device>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+  constructor(
+    private router: Router,
+  ) { }
 
 
   ngOnInit() {
@@ -40,6 +45,10 @@ export class DevicesTableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  linkToDetails(device: Device) {
+    this.router.navigate(['/devices', device.id]);
   }
 
 }

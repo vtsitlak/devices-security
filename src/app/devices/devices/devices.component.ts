@@ -19,7 +19,7 @@ export class DevicesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.vehiclesService.generateDevices().subscribe(devices => {
+    this.vehiclesService.getDevices().subscribe(devices => {
       this.devices = devices;
       this.loading.next(false);
     });

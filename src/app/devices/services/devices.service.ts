@@ -9,11 +9,26 @@ import { Device } from '../models/device';
 })
 export class DevicesService {
 
+  devices: Device[] = [];
   constructor() { }
 
-  generateDevices(): Observable<Device[]> {
+  getDevices(): Observable<Device[]> {
+    this.devices = (this.devices.length !== 100) ? this.generateDevices() : this.devices;
+    // add some delay to fake an actual http get call
+    return of(this.devices).pipe(delay(2000));
+  }
+
+  getDevice(id: number): Observable<Device> {
+    return (this.devices.length === 100) ? of(this.devices[id]).pipe(delay(1000)) : of(this.generateDevices()[id]).pipe(delay(1000));
+  }
+
+  private randomDate(start, end) {
+    const date = new Date(+start + Math.random() * (end - start));
+    return date;
+  }
+
+  private generateDevices(): Device[] {
     const devices: Device[] = [];
- 
     for (let i = 1; i <= 100; i++) {
       const device: Device = {
         id: i,
@@ -23,12 +38,6 @@ export class DevicesService {
       };
       devices.push(device);
     }
-
-    return of(devices).pipe(delay(2000));
-  }
-
-  private randomDate(start, end) {
-    const date = new Date(+start + Math.random() * (end - start));
-    return date;
+    return devices;
   }
 }

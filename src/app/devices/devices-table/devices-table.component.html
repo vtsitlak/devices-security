@@ -26,15 +26,16 @@
         <!-- Last seen Column -->
         <ng-container matColumnDef="lastSeen">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{label.lastSeen}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.lastSeen | date: 'dd/MM/yyyy' }} </td>
+            <td mat-cell *matCellDef="let row"> {{row.lastSeen | date: 'hh:mm:ss dd/MM/yyyy' }} </td>
         </ng-container>
 
         <!-- Details link Column -->
         <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let row"> <a routerLink="/{{row.id}}">
-                    <mat-icon matTooltip="link to device details" color="primary">launch</mat-icon>
-                </a>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button color="primary"  matTooltip="{{label.details}}" color="accent" (click)="linkToDetails(row)">
+                    <mat-icon>launch</mat-icon>
+                </button>
             </td>
         </ng-container>
 

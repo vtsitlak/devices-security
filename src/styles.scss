@@ -203,3 +203,10 @@ $theme: mat-light-theme($primary, $accent, $warning);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
+
+
+// shared styling
+mat-spinner {
+  margin: auto;
+  top: 100px;
+}

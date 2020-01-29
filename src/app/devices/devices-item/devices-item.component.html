@@ -1,1 +1,19 @@
-<p>devices-item works!</p>
+<div class="device-item-panel">
+    <mat-spinner *ngIf="loading$ | async" color="accent" diameter="180"></mat-spinner>
+    <div *ngIf="!(loading$ | async)">
+        <mat-card>
+            <mat-card-title>Device details</mat-card-title>
+            <mat-card-content>
+                <mat-list role="list">
+                    <h3 matheader></h3>
+                    <mat-list-item role="listitem">ID: <span>{{device.id}}</span></mat-list-item>
+                    <mat-list-item role="listitem">Type: <span>{{device.type}}</span></mat-list-item>
+                    <mat-list-item role="listitem">Risk level/score: <span>{{device.riskLevel}}</span></mat-list-item>
+                    <mat-list-item role="listitem">Last seen:
+                        <span>{{device.lastSeen | date: 'hh:mm:ss dd/MM/yyyy'}}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
