@@ -1,0 +1,8 @@
+<div class="details-panel">
+    <mat-spinner *ngIf="loading$ | async" color="accent" diameter="180"></mat-spinner>
+    <div *ngIf="!(loading$ | async)">
+        <mat-card *ngIf="data">
+           <app-dashboard-charts></app-dashboard-charts>
+        </mat-card>
+    </div>
+</div>
