@@ -1,0 +1,8 @@
+<div class="settings-panel">
+    <mat-spinner *ngIf="loading$ | async" color="accent" diameter="180"></mat-spinner>
+    <div *ngIf="!(loading$ | async)">
+       <mat-card *ngIf="!!settings">
+           <app-settings-form [settings]="settings"></app-settings-form>
+       </mat-card>
+    </div>
+</div>
