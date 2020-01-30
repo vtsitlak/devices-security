@@ -1,8 +1,22 @@
-<div class="details-panel">
+<div class="dashboard-panel">
     <mat-spinner *ngIf="loading$ | async" color="accent" diameter="180"></mat-spinner>
     <div *ngIf="!(loading$ | async)">
         <mat-card *ngIf="data">
-           <app-dashboard-charts></app-dashboard-charts>
+            <mat-card-title>Dashboard</mat-card-title>
+            <mat-card-content>
+                <div>Range:</div>
+                <mat-slide-toggle [(ngModel)]="singleDay">Single day</mat-slide-toggle>
+                <mat-slider (change)="rangeText(from, to)" [(ngModel)]="from" thumbLabel [displayWith]="formatLabel"
+                    tickInterval="31" min="0" max="30">from
+                </mat-slider>
+                <mat-slider (change)="rangeText(from, to)" [(ngModel)]="to" *ngIf="!singleDay" thumbLabel
+                    [displayWith]="formatLabel" tickInterval="31" min="0" max="30">to
+                </mat-slider> {{range}}
+                <div style="width: 100%; height: 400px;">
+                    <app-dashboard-charts [data]="data" [from]="from" [to]="to" [singleDay]="singleDay">
+                    </app-dashboard-charts>
+                </div>
+            </mat-card-content>
         </mat-card>
     </div>
 </div>
