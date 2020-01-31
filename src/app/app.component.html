@@ -32,7 +32,13 @@
   <mat-drawer-content>
 
     <mat-toolbar>
-
+      {{title}}
+      <span class="user-menu">
+        <button mat-button [matMenuTriggerFor]="menu">User 1 <mat-icon>perm_identity</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Logout <mat-icon>exit_to_app</mat-icon></button>
+        </mat-menu>
+      </span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-drawer-content>
