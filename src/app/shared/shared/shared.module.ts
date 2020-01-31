@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,9 +18,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 const ANGULAR_MODULES: any[] = [
-  FormsModule, ReactiveFormsModule,
+  FormsModule, ReactiveFormsModule, HttpClientModule
 ];
 
 const MATERIAL_MODULES: any[] = [
@@ -30,7 +32,7 @@ const MATERIAL_MODULES: any[] = [
   MatToolbarModule, MatSidenavModule,
   MatSelectModule, MatProgressSpinnerModule,
   MatSliderModule, MatTableModule, MatFormFieldModule,
-  MatPaginatorModule, MatSortModule,
+  MatPaginatorModule, MatSortModule
 ];
 
 @NgModule({
@@ -43,6 +45,10 @@ const MATERIAL_MODULES: any[] = [
   exports: [
     ANGULAR_MODULES,
     MATERIAL_MODULES,
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg'));
+  }
+}

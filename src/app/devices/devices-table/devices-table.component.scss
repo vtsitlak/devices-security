@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 table,
 .mat-form-field {
   width: 100%;
@@ -5,4 +7,16 @@ table,
 
 ::ng-deep .mat-cell:last-of-type {
   text-align: right;
+}
+
+.low-risk {
+  color: $green;
+}
+
+.medium-risk {
+  color: $orange;
+}
+
+.high-risk {
+  color: $red;
 }

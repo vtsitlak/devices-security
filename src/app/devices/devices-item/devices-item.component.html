@@ -6,8 +6,18 @@
             <mat-card-content>
                 <mat-list role="list">
                     <mat-list-item role="listitem">ID: <span>{{device.id}}</span></mat-list-item>
-                    <mat-list-item role="listitem">Type: <span>{{device.type}}</span></mat-list-item>
-                    <mat-list-item role="listitem">Risk level/score: <span>{{device.riskLevel}}</span></mat-list-item>
+                    <mat-list-item role="listitem">Type: <span>
+                            <mat-icon matTooltip="{{device.type}}" color="accent" *ngIf="device.type === 'Android'">
+                                android</mat-icon>
+                            <mat-icon matTooltip="{{device.type}}" color="accent" *ngIf="device.type === 'iOS'"
+                                svgIcon="apple-ios"></mat-icon>
+                            <mat-icon matTooltip="{{device.type}}" color="accent" *ngIf="device.type === 'PC'">computer
+                            </mat-icon>
+                        </span></mat-list-item>
+                    <mat-list-item role="listitem">
+                        Risk level/score: <span
+                            [ngClass]="(device.riskLevel <= 30)? 'low-risk': (device.riskLevel > 30 && device.riskLevel <= 60) ? 'medium-risk' : 'high-risk'">{{device.riskLevel}}</span>
+                    </mat-list-item>
                     <mat-list-item role="listitem">Last seen:
                         <span>{{device.lastSeen | date: 'hh:mm:ss dd/MM/yyyy'}}</span>
                     </mat-list-item>

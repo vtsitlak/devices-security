@@ -1,5 +1,6 @@
 <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter on ID, type, Risk level or last seen date">
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -14,13 +15,18 @@
         <!-- Type Column -->
         <ng-container matColumnDef="type">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{label.type}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+            <td mat-cell *matCellDef="let row" matTooltip="{{row.type}}">
+                <mat-icon color="accent" *ngIf="row.type === 'Android'">android</mat-icon>
+                <mat-icon color="accent" *ngIf="row.type === 'iOS'" svgIcon="apple-ios"></mat-icon>
+                <mat-icon color="accent" *ngIf="row.type === 'PC'">computer</mat-icon>
+            </td>
         </ng-container>
 
         <!-- Risk level Column -->
         <ng-container matColumnDef="riskLevel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{label.riskLevel}} </th>
-            <td mat-cell *matCellDef="let row"> {{row.riskLevel}} </td>
+            <td mat-cell *matCellDef="let row" 
+            [ngClass]="(row.riskLevel <= 30)? 'low-risk': (row.riskLevel > 30 && row.riskLevel <= 60) ? 'medium-risk' : 'high-risk'"> {{row.riskLevel}} </td>
         </ng-container>
 
         <!-- Last seen Column -->
@@ -33,7 +39,8 @@
         <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary"  matTooltip="{{label.details}}" color="accent" (click)="linkToDetails(row)">
+                <button mat-icon-button color="primary" matTooltip="{{label.details}}" color="accent"
+                    (click)="linkToDetails(row)">
                     <mat-icon>launch</mat-icon>
                 </button>
             </td>
