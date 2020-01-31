@@ -28,7 +28,7 @@ export class DashboardChartsComponent implements OnChanges {
   legendTitle = 'Issue type';
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C']
+    domain: ['#233c45', '#f89a1c']
   };
 
   constructor() {

@@ -4,12 +4,19 @@
         <mat-card>
             <mat-card-title>App details</mat-card-title>
             <mat-card-content>
-                <mat-list role="list">               
+                <mat-list role="list">
                     <mat-list-item role="listitem">Name: <span>{{details.name}}</span></mat-list-item>
+                    <mat-divider></mat-divider>
                     <mat-list-item role="listitem">Version: <span>{{details.version}}</span></mat-list-item>
-                    <mat-list-item role="listitem">Installation date: <span>{{details.installation}}</span></mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">Installation date: <span>{{details.installation}}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
                     <mat-list-item role="listitem">Last update date: <span>{{details.lastUpdate}}</span></mat-list-item>
-                    <mat-list-item role="listitem">installation file hash: <span>{{details.fileHash}}</span></mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">installation file hash: <span>{{details.fileHash}}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
                     <mat-list-item role="listitem">Permisions:
                         <span *ngFor="let p of details.permisions">{{p}} </span>
                     </mat-list-item>

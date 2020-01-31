@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDividerModule } from '@angular/material/divider';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -32,7 +33,7 @@ const MATERIAL_MODULES: any[] = [
   MatToolbarModule, MatSidenavModule,
   MatSelectModule, MatProgressSpinnerModule,
   MatSliderModule, MatTableModule, MatFormFieldModule,
-  MatPaginatorModule, MatSortModule
+  MatPaginatorModule, MatSortModule, MatDividerModule
 ];
 
 @NgModule({
