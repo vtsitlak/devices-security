@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './details/details.component';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 import { DetailsService } from './services/details.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared/shared.module';
 
 export const detailsRoutes: Routes = [
   {
@@ -18,9 +16,7 @@ export const detailsRoutes: Routes = [
   declarations: [DetailsComponent],
   imports: [
     CommonModule,
-    MatListModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    SharedModule,
     RouterModule.forChild(detailsRoutes),
   ],
   providers: [DetailsService],

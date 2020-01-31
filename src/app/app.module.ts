@@ -1,16 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +11,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatMenuModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
