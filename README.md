@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
 ## Description 
-A Demo app that displays the UI of devices sevurity app.
+A Demo app that displays the UI of devices security app.
 This app can be used as an example of using Angular, Typescript, Angular Material, ngxCharts, RxJS and SCSS 
 
 ## Setup
