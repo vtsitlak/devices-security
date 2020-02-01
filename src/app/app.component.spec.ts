@@ -36,9 +36,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Threat fabric App'`, () => {
+  it(`should have as title 'Devices Security App'`, () => {
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Threat fabric App');
+    expect(app.title).toEqual('Devices Security App');
   });
 
   it('navigate to "" redirects you to /devices', fakeAsync(() => {
