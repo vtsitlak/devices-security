@@ -32,7 +32,9 @@
   <mat-drawer-content>
 
     <mat-toolbar>
-      {{title}}
+      <span class=title>
+        {{title}}
+      </span>
       <span class="user-menu">
         <button mat-button [matMenuTriggerFor]="menu">User 1 <mat-icon>perm_identity</mat-icon></button>
         <mat-menu #menu="matMenu">

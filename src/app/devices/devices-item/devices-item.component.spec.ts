@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { DevicesItemComponent } from './devices-item.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DevicesItemComponent', () => {
   let component: DevicesItemComponent;
@@ -8,7 +10,8 @@ describe('DevicesItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DevicesItemComponent ]
+      declarations: [ DevicesItemComponent ],
+      imports: [ SharedModule, RouterTestingModule ],
     })
     .compileComponents();
   }));
@@ -22,4 +25,10 @@ describe('DevicesItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should update the loading state after loading data', fakeAsync(() => {
+    component.ngOnInit();
+    tick(5000);
+    expect(component.loading.value).toBeFalsy();
+  }));
 });

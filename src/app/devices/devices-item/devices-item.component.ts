@@ -24,7 +24,6 @@ export class DevicesItemComponent implements OnInit {
     const id = this.route.snapshot.params.id;
     this.vehiclesService.getDevice(id - 1).subscribe(device => {
       this.device = device;
-      console.log(device);
       this.loading.next(false);
     });
 

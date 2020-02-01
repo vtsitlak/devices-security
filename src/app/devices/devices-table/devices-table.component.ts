@@ -47,8 +47,8 @@ export class DevicesTableComponent implements OnInit {
     }
   }
 
-  linkToDetails(device: Device) {
-    this.router.navigate(['/devices', device.id]);
+  linkToDetails(id: number) {
+    this.router.navigate(['/devices', id]);
   }
 
 }

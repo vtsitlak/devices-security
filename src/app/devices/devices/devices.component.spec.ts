@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatTableModule } from '@angular/material/table';
-
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { DevicesComponent } from './devices.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DevicesComponent', () => {
   let component: DevicesComponent;
@@ -9,8 +9,12 @@ describe('DevicesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatTableModule],
-      declarations: [DevicesComponent]
+      imports: [SharedModule],
+      declarations: [DevicesComponent],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+      ]
     })
       .compileComponents();
   }));
@@ -24,4 +28,16 @@ describe('DevicesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load the data', fakeAsync(() => {
+    component.ngOnInit();
+    tick(5000);
+    expect(component.devices.length).toBeGreaterThan(10);
+  }));
+
+  it('should update the loading state after loading data', fakeAsync(() => {
+    component.ngOnInit();
+    tick(5000);
+    expect(component.loading.value).toBeFalsy();
+  }));
 });

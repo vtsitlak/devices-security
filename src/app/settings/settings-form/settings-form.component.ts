@@ -27,11 +27,12 @@ export class SettingsFormComponent implements OnInit {
       autoUpdate: this.settings.autoUpdate,
       recoveryEmail: new FormControl(this.settings.recoveryEmail, [Validators.required, Validators.email]),
       securityQuestion: new FormControl(this.settings.securityQuestion, [Validators.required]),
-      timeZone: this.settings.timeZone,
+      timeZone: this.settings.timeZone.toString(),
       languange: this.settings.languange,
     });
     // dynamically update settings
     this.settingsForm.valueChanges.subscribe((s: AppSettings) => {
+      s.timeZone = Number(s.timeZone);
       this.settingsService.updateSettings(s);
     });
   }
